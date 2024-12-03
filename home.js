@@ -1,7 +1,13 @@
 gsap.registerPlugin(ScrollTrigger);
 
 // Matter JS Code
-
+function hidefloatcharacter() {
+  const floatElement = document.querySelector('.home-hero_drag_floating-list');
+  if (floatElement) {
+    floatElement.style.display = 'none';
+  }
+  console.log("float is hidden");
+}
 // Draggable for Hero Section
 function recthit(rectone, recttwo) {
   var r1 = $(rectone);
@@ -80,7 +86,7 @@ function checkDraggableIsFinished() {
       opacity: 1,
       autoAlpha: 1
     })
-
+    hidefloatcharacter()
     setTimeout(function () {
       const currentHeading = $('.home-hero_drag_char-list, .home-hero_drag_floating-list');
       const newHeadingChars = $('.home-hero_drag-finished .char');
