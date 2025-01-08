@@ -92,12 +92,12 @@ function checkDraggableIsFinished() {
       const newHeadingChars = $('.home-hero_drag-finished .char');
 
       const currentHeadingChars = [currentHeading.find('.home-hero_drag_char:nth-child(1)'),
-        currentHeading.find('.home-hero_drag_char:nth-child(2)'), currentHeading.find(
-          '.home-hero_drag_char:nth-child(3)'), currentHeading.find(
+      currentHeading.find('.home-hero_drag_char:nth-child(2)'), currentHeading.find(
+        '.home-hero_drag_char:nth-child(3)'), currentHeading.find(
           '[hero-drop="1"], [hero-drag="1"]'), currentHeading.find(
-          '[hero-drop="2"], [hero-drag="2"]'), currentHeadingChar6 = currentHeading.find(
-          '[hero-drop="3"], [hero-drag="3"]'), currentHeading.find(
-          '[hero-drop="4"], [hero-drag="4"]')
+            '[hero-drop="2"], [hero-drag="2"]'), currentHeadingChar6 = currentHeading.find(
+              '[hero-drop="3"], [hero-drag="3"]'), currentHeading.find(
+                '[hero-drop="4"], [hero-drag="4"]')
       ];
 
       let headingTL = gsap.timeline({
@@ -852,11 +852,11 @@ window.addEventListener('resize', function () {
       slideChangeTransitionStart: function () {
         $(".swiper-pagination-custom .swiper-pagination-switch").removeClass("active");
         $(".swiper-pagination-custom .swiper-pagination-switch").eq(timelineSwiper
-            .realIndex)
+          .realIndex)
           .addClass("active");
         $(document).find('.swiper-pagination-progressbar-fill').css('--progressFillScale', (
           timelineSwiper
-          .realIndex + 1) * (1 / switchItemsLength));
+            .realIndex + 1) * (1 / switchItemsLength));
       }
     }
   });
@@ -871,4 +871,78 @@ window.addEventListener('resize', function () {
         $(".swiper-pagination-custom .swiper-pagination-switch").removeClass("active");
         switcher.addClass("active");
       });
+})();
+
+(function initializePieChart() {
+  const ctx = document.getElementById('tax-chart');
+
+  new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: ["Pay & Super", "Insurance", "Training & Events", "Humdrum"],
+      datasets: [
+        {
+          fill: true,
+          backgroundColor: ['#fdebab', '#7fe4dd', '#65dcfe', '#024a5e'],
+          data: [76, 6, 8, 10],
+          borderColor: ['#121617', '#121617', '#121617', '#121617'],
+          borderWidth: [3, 3, 3, 3]
+        }
+      ]
+    },
+    options: {
+      plugins: {
+        legend: false,
+        tooltip: {
+          callbacks: {
+            label: function (context) {
+              let label = context.dataset.label || '';
+              return label;
+            }
+          }
+        }
+      },
+    }
+  });
+})();
+
+(function initializeTeamSwiper() {
+  const swiperCard = new Swiper('.swiper.is-card', {
+    effect: 'cards',
+    grabCursor: true,
+    cardsEffect: {
+      slideShadows: false,
+      perSlideRotate: 10
+    },
+    initialSlide: 6,
+    pagination: {
+      el: '.team-pagination',
+      type: 'bullets',
+      bulletClass: 'team_pagination',
+      bulletActiveClass: 'is-active',
+      bulletElement: 'button',
+      clickable: true,// Enables clicking on pagination bullets to switch slides
+    },
+  });
+
+  const swiper = new Swiper('.swiper.is-tablet-team', {
+    slidesPerView: 1.15,
+    navigation: {
+      nextEl: '.team_card-nav.is-right',
+      prevEl: '.team_card-nav.is-left',
+    },
+    spaceBetween: 24, // Adjust space between slides
+    loop: true, // Infinite loop
+    pagination: false, // Disable pagination
+    breakpoints: {
+      // mobile landscape
+      480: {
+        slidesPerView: 'auto',
+      },
+      // tablet
+      768: {
+        slidesPerView: 'auto',
+      }
+    },
+  });
 })();
