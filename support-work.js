@@ -114,9 +114,7 @@
     secondLottieInstance.stop(); // Stop the animation to reset it
     secondLottieInstance.play(); // Start playing the second Lottie animation from the beginning
   });
-})();
 
-(function initializePricingData() {
   async function fetchPricingData() {
     const url = "https://humdrum.app/api/1.1/wf/payrates-current-payrates";
     const headers = {
