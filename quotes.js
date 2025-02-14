@@ -1,3 +1,6 @@
+const slider = document.getElementById('range');
+let rates;
+
 (function initializeSliders() {
   document.addEventListener('DOMContentLoaded', function () {
     const rangeSlider = document.getElementById('range');
@@ -123,7 +126,5 @@
     }
   }
 
-  const slider = document.getElementById('range');
-  let rates;
   initialize();
 })();
