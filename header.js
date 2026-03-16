@@ -43,12 +43,10 @@ function navbarToggle() {
       }
     });
 
-    $("[data-cta='SignUp'], [data-cta='TalktoSomeone']").on("click", function () {
+    $(".navbar_component [data-cta='SignUp'], .navbar_component [data-cta='TalktoSomeone']").on("click", function () {
       const $btn = $(".navbar_menu-button");
       if ($btn.hasClass("clicked")) {
-        $btn.removeClass("clicked");
-        navbarToggleTl.timeScale(2).reverse();
-        navLogoTl.timeScale(1.4).reverse();
+        $btn.click();
       }
     });
   
